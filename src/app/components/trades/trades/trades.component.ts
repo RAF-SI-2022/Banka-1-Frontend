@@ -48,6 +48,8 @@ export class TradesComponent implements OnInit {
       quantity: ['', Validators.required],
       limit: ['', Validators.required],
       stop: ['', Validators.required],
+      price: ['', Validators.required],
+
     });
 
     this.route.params.subscribe(params => {

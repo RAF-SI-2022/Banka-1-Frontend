@@ -42,6 +42,7 @@ export class TradesForexComponent implements OnInit {
   ngOnInit(): void {
     this.forexFormGroup = this.formBuilder.group({
       quantity: ['', Validators.required],
+      price: ['', Validators.required],
       limit: ['', Validators.required],
       stop: ['', Validators.required],
       selectedCurrency1: ['', Validators.required],

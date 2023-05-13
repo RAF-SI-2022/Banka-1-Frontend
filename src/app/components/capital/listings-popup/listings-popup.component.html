@@ -15,10 +15,13 @@
             <tr class="color table-position" id="trTable">
               <th>Simbol</th>
               <th>Količina</th>
+              <th>Cena</th>
+
             </tr>
             <tr *ngFor="let listing of listings">
               <td>{{ listing.symbol }}</td>
               <td>{{ listing.quantity }}</td>
+              <td>{{ listing.quantity * listing.price }}</td>
             </tr>
             </thead>
           </table>

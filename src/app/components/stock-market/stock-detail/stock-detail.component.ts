@@ -195,6 +195,20 @@ export class StockDetailComponent implements OnInit {
     )
   }
 
+  getStockDataBySymbol(){
+    this.loadingStock = true;
+    this.stocksService.getStockBySymbol(this.stock!.symbol).subscribe(
+      (data) => {
+        this.stock = data;
+        this.loadingStock = false;
+      },
+      (error) => {
+        this.popupComponent.openPopup(error.message);
+        this.loadingStock = false;
+      }
+    )
+  }
+
   toggleChartType(){
     if(this.chartType == "candle"){
       this.chartType = "basic";
@@ -286,6 +300,7 @@ export class StockDetailComponent implements OnInit {
 
   refresh(): void {
     this.getStockData();
+    this.getStockDataBySymbol();
     this.getTimeSeries();
   }
 

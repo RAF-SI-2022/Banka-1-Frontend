@@ -1,6 +1,7 @@
 import {ListingTypeEnum} from "../orders/listing-type-enum";
 
 export interface Listing{
+  price: number;
   id: number,
   listingType: ListingTypeEnum,
   symbol: string,
@@ -11,3 +12,5 @@ export interface ListingSum{
   listingType: ListingTypeEnum,
   quantity: number
 }
+
+
