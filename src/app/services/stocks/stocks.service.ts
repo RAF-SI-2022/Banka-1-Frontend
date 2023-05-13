@@ -72,6 +72,17 @@ export class StocksService {
     )
   }
 
+  getStockBySymbol(stockSymbol: string): Observable<any>{
+    return this.httpClient.get(this.stocksUrl + "/" + stockSymbol,
+      {
+        headers: this.headers
+      }).pipe(
+      catchError(err => {
+        return throwError(() => new Error(err.error.message))
+      })
+    )
+  }
+
   getOptions(expirationDate: Date | null, symbol: string): Observable<any> {
     return this.httpClient.post<Option[]>(this.optionsUrl,
       {
