@@ -1,0 +1,125 @@
+.modal{
+  display: flex !important;
+  background: var(--si-black-transparent);
+}
+
+.modal-header-text {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.dugme {
+  margin-left: auto;
+  border-radius: 40%;
+}
+
+.border-round {
+  border: solid 2px;
+  border-color: var(--si-blue);
+  border-radius: 50px;
+}
+
+.line {
+  height: 2px;
+  background-color: dodgerblue; /*var(--si-blue);*/
+  border: none;
+}
+
+.modal-content{
+  margin-top: 30%;
+  border-radius: 50px;
+  border: solid 2px;
+  background-color: var(--si-white);
+  border-color: var(--si-blue);
+}
+.button {
+  border-radius: 20px;
+
+}
+
+form {
+  padding: 4em;
+  padding-bottom: 2em;
+  border: solid 2px;
+  border-color: var(--si-blue);
+  border-radius: 50px;
+}
+
+.myp-text {
+  color: var(--si-blue);
+}
+
+h6.error {
+  color: var(--si-red);
+}
+
+.row{
+  margin-bottom: 10px;
+}
+
+.sifra-div{
+  text-decoration: underline;
+}
+
+.sifra-div:hover{
+  cursor: pointer;
+}
+
+input:disabled{
+  background: #dadada;
+}
+
+
+.inline {
+  display: inline-block;
+
+  border-color: var(--si-blue);
+  border-radius: 10px;
+  margin: 10px 20px;
+  width: 120px;
+  font-size: 16px;
+
+}
+
+
+.inline-selected {
+  display: inline-block;
+  border: solid 2px;
+  border-color: var(--si-blue);
+  border-radius: 10px;
+  margin: 10px 20px;
+  width: 120px;
+  font-size: 16px;
+
+}
+
+.input-field  {
+  display: inline-block;
+  border: solid 3px;
+  border-color: var(--si-blue);
+  border-radius: 20px;
+  width: 205px;
+  font-size: 16px;
+
+}
+
+.button {
+  display: inline-block;
+  border: solid 3px;
+  border-color: var(--si-blue);
+  color: white;
+  background-color: blue;
+  border-radius: 20px;
+  width: 205px;
+}
+
+.black {
+  color:black;
+
+}
+
+h2 {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
