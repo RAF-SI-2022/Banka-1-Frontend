@@ -13,6 +13,11 @@ import {
 import {ResetPasswordComponent} from "./components/users/reset-password/reset-password.component";
 import {ActivatePasswordComponent} from "./components/users/activate-password/activate-password.component";
 import {UserRoleEnum} from "./model/user/user-role-enum";
+import {ExchangeBuyComponent} from "./components/Exchange-buy/exchange-buy.component";
+import {ExchangeComponent} from "./components/Exchange-rate/exchange.component";
+import {CardComponent} from "./components/Card_list/card.component";
+import {ExchangeSellComponent} from "./components/Exchange-sell/exchange-sell.component";
+import {CreditComponent} from "./components/Credit/credit.component";
 
 
 const routes: Routes = [
@@ -59,7 +64,29 @@ const routes: Routes = [
   {
     path: "reset-password/:userId",
     component: ResetPasswordComponent,
+  },
+  {
+    path: "card-component",
+    component: CardComponent,
+  },
+  {
+    path: "credit-component",
+    component: CreditComponent,
+  },
+  {
+    path: "exchange-buy",
+    component: ExchangeBuyComponent,
+  },
+  {
+    path: "exchange-rate",
+    component: ExchangeComponent,
+  },
+  {
+    path: "exchange-sell",
+    component: ExchangeSellComponent,
+
   }
+
 ];
 
 @NgModule({
