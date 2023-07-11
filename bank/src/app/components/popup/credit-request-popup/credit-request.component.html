@@ -1,0 +1,103 @@
+<!--<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">-->
+<div class="modal justify-content-center" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <div class="w-75 h-75">
+    <div class="modal-body">
+      <br>
+      <div class="d-flex align-items-center justify-content-center">
+
+        <div  class="modal-content ">
+          <div class="d-flex align-items-center py-3 mx-3">
+            <div class="modal-header-text"><h2>PODNESI ZAHTEV ZA KREDIT</h2></div>
+            <button type="button" class="dugme" data-bs-dismiss="modal" aria-label="Close" (click)="closePopup()">x</button>
+          </div>
+          <hr>
+
+
+          <div class="modal-body py-3 px-4  ">
+            <div class="myp-text mb-3">
+              <h3> Informacije</h3>
+
+            </div>
+
+
+
+            <div class="border-round p-6">
+              <div class="container row">
+                <div class="col-6 container my-3 ">
+                  <select class="form-select my-2">
+                    <option>Vrsta kredita</option>
+                    <option>Default select</option>
+                  </select>
+                  <div class="d-flex flex-row justify-content-between my-2">
+                    <input class="form-select w-75 me-3" type="text" placeholder="iznos">
+                    <select class="form-control w-25">
+                      <option>RSD</option>
+                      <option>USD</option>
+                    </select>
+                  </div>
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Svrha kredita/ napomena</label>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between my-2 align-items-center">
+                    <span>Zaposlen/a za stalno ?</span>
+                    <select class="form-control w-25">
+                      <option>DA</option>
+                      <option>NE</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-6 my-4">
+                  <p>Period zaposlenja kod trenutnog poslodavca:</p>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="row">
+                        <div class="col-5">
+                          <label>Godina:</label>
+                        </div>
+                        <div class="col-5">
+                          <input type="number" class="form-control d-inline">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="row justify-content-end">
+                        <div class="col-5">
+                          <label>Mesec:</label>
+                        </div>
+                        <div class="col-5">
+                          <input type="number"  class="form-control d-inline" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row">
+                    <span>Rocnost:</span>
+                    <div class="mx-3 flex-shrink-1">
+                      <input type="number" class="form-control d-inline">
+                    </div>
+                    <span>meseca.</span>
+                  </div>
+                  <select class="form-control my-3">
+                    <option>ekspozitura</option>
+                  </select>
+                  <input type="number" class="form-control d-inline my-1" placeholder="broj telefona">
+                </div>
+              </div>
+
+            </div>
+            <div class="  d-flex align-items-center justify-content-center">
+              <button type="button" class="btn btn-primary rounded-pill w-25 my-2" (click)="cancel()">Posalji</button>
+            </div>
+            <div class="  d-flex align-items-center justify-content-center">
+              <button type="button" class="btn btn-outline-primary rounded-pill w-25 my-2" (click)="cancel()">Nazad</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
