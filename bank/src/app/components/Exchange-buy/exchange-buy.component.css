@@ -45,11 +45,11 @@ input:disabled{
 
 .inline-selected {
   display: inline-block;
-  border: solid 2px;
+  border: solid 3px;
   border-color: var(--si-blue);
   border-radius: 10px;
-  margin: 10px 20px;
-  width: 120px;
+  margin: 10px 10px;
+  width: 100px;
   font-size: 16px;
 
 }
