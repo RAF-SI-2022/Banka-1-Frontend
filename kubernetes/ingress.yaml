@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-stock-market-front
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  namespace: __NAMESPACE__
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - __DOMAIN__
+      secretName: banka-1-tls
+  rules:
+    - host: __DOMAIN__
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: stock-market-front
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-bank-front
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  namespace: __NAMESPACE__
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - __DOMAIN__
+      secretName: banka-1-tls
+  rules:
+    - host: __DOMAIN__
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/bank(/|$)(.*)"
+            backend:
+              service:
+                name: bank-front
+                port:
+                  number: 81

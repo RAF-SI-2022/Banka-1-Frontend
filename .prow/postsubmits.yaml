@@ -1,0 +1,64 @@
+postsubmits:
+  - name: post-banka-1-frontend-deploy
+    labels:
+      preset-harbor-robot-push: "true"
+    decorate: true
+    always_run: true
+    branches:
+      - ^main$
+    spec:
+      serviceAccountName: prow-admin
+      containers:
+        - image: harbor.k8s.elab.rs/base-images/base:java-19-node-18-docker
+          command:
+            - /bin/bash
+            - -c
+            - |
+              set -euo pipefail
+
+              ############################
+              # Push Docker image-a      #
+              ############################
+
+              start-docker.sh
+              docker login -u $HARBOR_USERNAME -p $HARBOR_PASSWORD harbor.k8s.elab.rs
+
+              commit_hash=$(git rev-parse HEAD)
+              tag_name=$(git tag --points-at HEAD)
+              image_tags="latest"
+              image_tags+=" ${commit_hash}"
+              image_tags+=" ${tag_name}"
+              
+              image_tags=$(echo $image_tags | xargs)
+
+              docker build -t harbor.k8s.elab.rs/banka-1/stock-market-front:builder ./stock-market
+              docker build -t harbor.k8s.elab.rs/banka-1/bank-front:builder ./bank
+
+              for tag in $image_tags
+              do
+                docker tag harbor.k8s.elab.rs/banka-1/stock-market-front:builder harbor.k8s.elab.rs/banka-1/stock-market-front:$tag
+                docker push harbor.k8s.elab.rs/banka-1/stock-market-front:$tag
+              
+                docker tag harbor.k8s.elab.rs/banka-1/bank-front:builder harbor.k8s.elab.rs/banka-1/bank-front:$tag
+                docker push harbor.k8s.elab.rs/banka-1/bank-front:$tag
+              done
+              
+              ############################
+              # Deployment na Kubernetes #
+              ############################
+              
+              namespace="banka-1-dev"
+              domain="banka-1-dev.k8s.elab.rs"
+              if [[ -n "${tag_name}" ]]; then
+                namespace="banka-1-prod"
+                domain="banka-1.k8s.elab.rs"
+              fi
+              
+              find . -type f -exec sed -i.bak "s;__COMMIT_HASH__;$commit_hash;g" {} \;
+              find . -type f -exec sed -i.bak "s;__NAMESPACE__;$namespace;g" {} \;
+              find . -type f -exec sed -i.bak "s;__DOMAIN__;$domain;g" {} \;
+
+              kubectl apply -f kubernetes/
+          securityContext:
+            privileged: true
+          imagePullPolicy: Always

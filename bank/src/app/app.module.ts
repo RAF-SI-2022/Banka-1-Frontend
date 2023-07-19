@@ -44,7 +44,7 @@ import { DomesticPaymentDetailsPopupComponent } from './components/payments/popu
 import { ExchangeDetailsPopupComponent } from './components/payments/popup/exchange-details-popup/exchange-details-popup.component';
 
 
-import {DatePipe, NgForOf, NgSwitchCase} from "@angular/common";
+import {APP_BASE_HREF, DatePipe, NgForOf, NgSwitchCase} from "@angular/common";
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AccountsComponent } from './components/accounts/accounts/accounts.component';
 import { AccountDetailComponent } from './components/accounts/accounts/account-details/account-detail/account-detail.component';
@@ -141,7 +141,7 @@ export function playerFactory() {
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, { provide: APP_BASE_HREF, useValue: '/bank/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
