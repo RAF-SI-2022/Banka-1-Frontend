@@ -49,8 +49,8 @@ export class AccountsComponent {
 
   selectAccount(racun: any) {
     this.setAccountDetails(racun)
-    const selectedAccId = this.selectedAccount.id.toString()
-    this.getAllTransactionsForAccount(selectedAccId);
+    const selectedAccNumber = this.selectedAccount.accountNumber
+    this.getAllTransactionsForAccount(selectedAccNumber);
   }
 
   private getAllAccountsForLoggedInUser() {
@@ -67,8 +67,8 @@ export class AccountsComponent {
         this.selectedAccount = this.accounts[0]
         this.error = "";
         if (this.selectedAccount) {
-          const selectedAccId = this.selectedAccount.id.toString();
-          this.getAllTransactionsForAccount(selectedAccId);
+          const selectedAccNumber = this.selectedAccount.accountNumber;
+          this.getAllTransactionsForAccount(selectedAccNumber);
         }
 
         this.loading = false;
@@ -76,17 +76,17 @@ export class AccountsComponent {
     });
   }
 
-  private getAllTransactionsForAccount(selectedAccountId: string) {
+  private getAllTransactionsForAccount(selectedAccNumber: string) {
     this.loading = true;
 
-    this.accountService.getAllTransactionsForAccount(selectedAccountId).subscribe({
+    this.accountService.getAllTransactionsForAccount(selectedAccNumber).subscribe({
       error: (error) => {
         this.loading = false;
         this.popupComponent.openPopup(error.message)
       },
       next: (allTransactionsForAccount: any[]) => {
         this.transactions = []
-        console.log("selacc: " + selectedAccountId)
+        console.log("selacc: " + selectedAccNumber)
         this.transactions = allTransactionsForAccount;
 
         this.transactions = this.transactions.sort((a, b) => {
