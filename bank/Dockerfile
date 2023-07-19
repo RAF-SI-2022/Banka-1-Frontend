@@ -7,7 +7,7 @@ RUN npm run build -- --configuration=$configuration
 
 
 FROM nginx:latest as prod
-COPY --from=build /usr/local/app/dist/bank /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/bank /usr/share/nginx/html/bank
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 81
 CMD ["nginx", "-g", "daemon off;"]
