@@ -57,7 +57,6 @@
         <thead>
         <tr>
           <th style="color: var(--si-blue)">#</th>
-          <th style="color: var(--si-blue)">Naziv</th>
           <th style="color: var(--si-blue)">Datum</th>
           <th style="color: var(--si-blue)">Iznos</th>
         </tr>
@@ -65,7 +64,6 @@
         <tbody>
         <tr *ngFor="let transaction of transactions">
           <td style="background:transparent">{{ transaction.id }} </td>
-          <td style="background:transparent">{{ transaction.receiverName }}</td>
           <td style="background:transparent">{{ transaction.paymentTime }}</td>
           <td style="background:transparent">{{ transaction.amount }}</td>
         </tr>
