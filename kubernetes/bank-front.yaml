@@ -16,7 +16,7 @@ spec:
         app: bank-front
     spec:
       containers:
-        - image: harbor.k8s.elab.rs/banka-1/bank-front:__COMMIT_HASH_
+        - image: harbor.k8s.elab.rs/banka-1/bank-front:__COMMIT_HASH__
           imagePullPolicy: Always
           name: bank-front
           ports:
