@@ -41,7 +41,7 @@ spec:
     - host: __DOMAIN__
       http:
         paths:
-          - pathType: Prefix
+          - pathType: ImplementationSpecific
             path: "/bank(/|$)(.*)"
             backend:
               service:
