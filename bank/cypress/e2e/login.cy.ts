@@ -27,7 +27,7 @@ describe("Testira login stranicu", () => {
     cy.get("#userpassword").type(Cypress.env("password"));
     cy.get("[type='submit']").click();
     cy.url().should("equal", Cypress.config().baseUrl).and(() => {
-      expect(sessionStorage.getItem("jwt")).not.to.be.null;
+      expect(sessionStorage.getItem("jwt-bank")).not.to.be.null;
     });
   })
 })

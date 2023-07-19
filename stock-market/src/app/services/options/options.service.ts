@@ -14,14 +14,14 @@ export class OptionsService {
   private optionsUrl = environment.optionsUrl;
   private optionsTradeUrl = environment.ordersUrl;
   private headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + sessionStorage.getItem("jwt")
+    'Authorization': 'Bearer ' + sessionStorage.getItem("jwt-stock-market")
   });
 
   constructor(private httpClient: HttpClient, private currentUserService: CurrentUserService, private datePipe: DatePipe) {
     this.currentUserService.isLoggedIn.subscribe((loggedIn) => {
       if(loggedIn){
         this.headers = new HttpHeaders({
-          'Authorization': 'Bearer ' + sessionStorage.getItem("jwt")
+          'Authorization': 'Bearer ' + sessionStorage.getItem("jwt-stock-market")
         });
       }
     });

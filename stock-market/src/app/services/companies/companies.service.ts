@@ -13,14 +13,14 @@ export class CompaniesService {
 
   private companiesUrl = environment.companiesUrl;
   private headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + sessionStorage.getItem("jwt")
+    'Authorization': 'Bearer ' + sessionStorage.getItem("jwt-stock-market")
   });
 
   constructor(private httpClient: HttpClient, private currentUserService: CurrentUserService, private datePipe: DatePipe) {
     this.currentUserService.isLoggedIn.subscribe((loggedIn) => {
       if (loggedIn) {
         this.headers = new HttpHeaders({
-          'Authorization': 'Bearer ' + sessionStorage.getItem("jwt")
+          'Authorization': 'Bearer ' + sessionStorage.getItem("jwt-stock-market")
         });
       }
     });

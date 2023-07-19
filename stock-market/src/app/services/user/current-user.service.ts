@@ -16,12 +16,12 @@ export class CurrentUserService {
 
   //ovu metodu je potrebno pozvati kada login prodje uspesno
   setLogin(jwt: string){
-    sessionStorage.setItem("jwt", jwt);
+    sessionStorage.setItem("jwt-stock-market", jwt);
     this.loggedInBehavior.next(true);
   }
 
   getUserId(): number{
-    let token = sessionStorage.getItem("jwt");
+    let token = sessionStorage.getItem("jwt-stock-market");
     if(token == null){
       return -1;
     }
@@ -32,7 +32,7 @@ export class CurrentUserService {
 
   //metoda vraca email trenutnog korisnika
   getUserEmail(): string | null{
-    let token = sessionStorage.getItem("jwt");
+    let token = sessionStorage.getItem("jwt-stock-market");
     if(token == null){
       return null;
     }
@@ -42,7 +42,7 @@ export class CurrentUserService {
   }
 
   getFirstUserLetter(): string{
-    let token = sessionStorage.getItem("jwt");
+    let token = sessionStorage.getItem("jwt-stock-market");
     if(token == null){
       return "";
     }
@@ -53,7 +53,7 @@ export class CurrentUserService {
 
   //metoda proverava da li trenutni korisnik ima prosledjenu rolu
   checkUserRole(role: string): boolean{
-    let token = sessionStorage.getItem("jwt");
+    let token = sessionStorage.getItem("jwt-stock-market");
     if(token == null){
       return false;
     }
@@ -64,7 +64,7 @@ export class CurrentUserService {
 
   //vraca sve role trenutnog korisnika
   getUserRoles(): string[]{
-    let token = sessionStorage.getItem("jwt");
+    let token = sessionStorage.getItem("jwt-stock-market");
     if(token == null){
       return [];
     }
@@ -74,7 +74,7 @@ export class CurrentUserService {
   }
 
   getToken(): string{
-    return sessionStorage.getItem("jwt") || "";
+    return sessionStorage.getItem("jwt-stock-market") || "";
   }
 
   setLoggedInBehavior(loggedIn: boolean){
@@ -82,11 +82,11 @@ export class CurrentUserService {
   }
 
   private getLoginStatus(): boolean{
-    return !!sessionStorage.getItem("jwt");
+    return !!sessionStorage.getItem("jwt-stock-market");
   }
 
   hasAnyRoles(): boolean{
-    let token = sessionStorage.getItem("jwt");
+    let token = sessionStorage.getItem("jwt-stock-market");
     if(token == null){
       return false;
     }
@@ -96,12 +96,12 @@ export class CurrentUserService {
   }
 
   logout(){
-    sessionStorage.removeItem("jwt");
+    sessionStorage.removeItem("jwt-stock-market");
     this.setLoggedInBehavior(false);
     this.router.navigate(['/login']);
   }
 
   logoutUnload(){
-    sessionStorage.removeItem("jwt");
+    sessionStorage.removeItem("jwt-stock-market");
   }
 }
