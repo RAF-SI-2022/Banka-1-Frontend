@@ -23,14 +23,14 @@ export class PaymentService {
 
 
   private headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + sessionStorage.getItem("jwt")
+    'Authorization': 'Bearer ' + sessionStorage.getItem("jwt-bank")
   });
 
   constructor(private httpClient: HttpClient, private currentUserService: CurrentUserService) {
     this.currentUserService.isLoggedIn.subscribe((loggedIn) => {
       if(loggedIn){
         this.headers = new HttpHeaders({
-          'Authorization': 'Bearer ' + sessionStorage.getItem("jwt")
+          'Authorization': 'Bearer ' + sessionStorage.getItem("jwt-bank")
         });
       }
     });
